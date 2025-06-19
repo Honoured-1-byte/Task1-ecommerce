@@ -261,6 +261,17 @@ router.post("/checkout", middleware.isLoggedIn, async (req, res) => {
   );
 });
 
+router.get('/', async (req, res) => {
+  try {
+    console.log("Homepage route hit");
+    res.render('index');
+  } catch (err) {
+    console.error("Error on homepage:", err);
+    res.status(500).render('error');
+  }
+});
+
+
 // create products array to store the info of each product in the cart
 async function productsFromCart(cart) {
   let products = []; // array of objects
